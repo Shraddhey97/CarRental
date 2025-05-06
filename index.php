@@ -4,7 +4,6 @@ include('includes/config.php');
 error_reporting(0);
 
 ?>
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -18,19 +17,110 @@ error_reporting(0);
 <link href="assets/css/slick.css" rel="stylesheet">
 <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
 <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
-		<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
+        <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+        <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
+        <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet"> 
+<link rel="stylesheet" href="style.css" type="text/css">
+
+<style>
+.chat-button {
+  position: fixed;
+  bottom: 101px;
+  right: 30px;
+  background-color:rgb(255, 0, 0);
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+.chat-button:hover {
+  background-color:rgb(235, 94, 94);
+}
+
+.chat-box {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 30px;
+  width: 300px;
+  max-width: 90%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+  border: 1px solid #ddd;
+  flex-direction: column;
+}
+
+.chat-box .chat-header {
+  padding: 10px;
+  background-color:rgb(244, 0, 0);
+  color: white;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-box .chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.chat-box .chat-body {
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.chat-box .chat-footer {
+  display: flex;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+}
+
+.chat-box .chat-footer input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.chat-box .chat-footer button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  background-color:rgb(255, 0, 0);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+</style>
+
 </head>
 <body>
 
@@ -199,16 +289,33 @@ foreach($results as $result)
   <!-- Dark Overlay-->
   <div class="dark-overlay"></div>
 </section>
+
 <!-- Testimonial--> 
 
 
 <!--Footer -->
 <?php include('includes/footer.php');?>
-<!--Footer--> 
 
-<!--Back to top-->
+<!-- Chatbot Toggle Button -->
+<div class="chat-button" onclick="toggleChat()">
+  <i class="fa fa-comment"></i>
+</div>
+
+<!-- Chat Box (example) -->
+
+<div id="chat-box" class="chat-box">
+  <h6>Chatbot powered by Gemini </h6>
+        <div id="chatbox"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your message..." required />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</div>
+
+<!-- Back to Top -->
 <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-<!--/Back to top--> 
 
 <!--Login-Form -->
 <?php include('includes/login.php');?>
@@ -234,5 +341,17 @@ foreach($results as $result)
 <!--Slider-JS--> 
 <script src="assets/js/slick.min.js"></script> 
 <script src="assets/js/owl.carousel.min.js"></script>
+
+<script>
+function toggleChat() {
+  var chatBox = document.getElementById("chat-box");
+  if (chatBox.style.display === "none" || chatBox.style.display === "") {
+    chatBox.style.display = "flex";
+  } else {
+    chatBox.style.display = "none";
+  }
+}
+</script>
+
 </body>
 </html>
