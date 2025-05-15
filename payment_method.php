@@ -104,38 +104,38 @@ if (isset($_POST['pay_esewa'])) {
 
 <script>
 function validateKhaltiForm() {
-  let khaltiID = document.getElementById('khaltiID').value.trim();
-  let khaltiAmount = document.getElementById('khaltiAmount').value.trim();
-  let isValid = true;
-  let missingFields = [];
+    let khaltiID = document.getElementById('khaltiID').value.trim();
+    let khaltiAmount = document.getElementById('khaltiAmount').value.trim();
+    let isValid = true;
+    let missingFields = [];
 
-  // Reset error messages
-  document.getElementById('khaltiIDError').textContent = '';
-  document.getElementById('khaltiAmountError').textContent = '';
+    // Reset error messages
+    document.getElementById('khaltiIDError').textContent = '';
+    document.getElementById('khaltiAmountError').textContent = '';
 
-  if (khaltiID === '') {
-    missingFields.push('Khalti ID');
-    document.getElementById('khaltiIDError').textContent = 'Please enter your Khalti ID.';
-    isValid = false;
-  }
-
-  if (khaltiAmount === '') {
-    missingFields.push('Amount');
-    document.getElementById('khaltiAmountError').textContent = 'Please enter the amount.';
-    isValid = false;
-  }
-
-  if (!isValid) {
-    let alertMessage = 'Please enter all details for Khalti.';
-    if (missingFields.length === 1) {
-      alertMessage = `Please enter ${missingFields[0]} for Khalti.`;
-    } else if (missingFields.length > 1) {
-      alertMessage = `Please enter the following details for Khalti: ${missingFields.join(', ')}.`;
+    if (khaltiID === '') {
+        missingFields.push('Khalti ID');
+        document.getElementById('khaltiIDError').textContent = 'Please enter your Khalti ID.';
+        isValid = false;
     }
-    alert(alertMessage);
-  }
 
-  return isValid;
+    if (khaltiAmount === '') {
+        missingFields.push('Amount');
+        document.getElementById('khaltiAmountError').textContent = 'Please enter the amount.';
+        isValid = false;
+    }
+
+    if (!isValid) {
+        let alertMessage = 'Please enter all details for Khalti.';
+        if (missingFields.length === 1) {
+            alertMessage = `Please enter ${missingFields[0]} for Khalti.`;
+        } else if (missingFields.length > 1) {
+            alertMessage = `Please enter the following details for Khalti: ${missingFields.join(', ')}.`;
+        }
+        alert(alertMessage);
+    }
+
+    return isValid;
 }
 </script>
 <div class="tab-pane fade" id="esewa" role="tabpanel">
@@ -156,38 +156,38 @@ function validateKhaltiForm() {
 
 <script>
 function validateEsewaForm() {
-  let esewaID = document.getElementById('esewaID').value.trim();
-  let esewaAmount = document.getElementById('esewaAmount').value.trim();
-  let isValid = true;
-  let missingFields = [];
+    let esewaID = document.getElementById('esewaID').value.trim();
+    let esewaAmount = document.getElementById('esewaAmount').value.trim();
+    let isValid = true;
+    let missingFields = [];
 
-  // Reset error messages
-  document.getElementById('esewaIDError').textContent = '';
-  document.getElementById('esewaAmountError').textContent = '';
+    // Reset error messages
+    document.getElementById('esewaIDError').textContent = '';
+    document.getElementById('esewaAmountError').textContent = '';
 
-  if (esewaID === '') {
-    missingFields.push('eSewa ID');
-    document.getElementById('esewaIDError').textContent = 'Please enter your eSewa ID.';
-    isValid = false;
-  }
-
-  if (esewaAmount === '') {
-    missingFields.push('Amount');
-    document.getElementById('esewaAmountError').textContent = 'Please enter the amount.';
-    isValid = false;
-  }
-
-  if (!isValid) {
-    let alertMessage = 'Please enter all details for eSewa.';
-    if (missingFields.length === 1) {
-      alertMessage = `Please enter ${missingFields[0]} for eSewa.`;
-    } else if (missingFields.length > 1) {
-      alertMessage = `Please enter the following details for eSewa: ${missingFields.join(', ')}.`;
+    if (esewaID === '') {
+        missingFields.push('eSewa ID');
+        document.getElementById('esewaIDError').textContent = 'Please enter your eSewa ID.';
+        isValid = false;
     }
-    alert(alertMessage);
-  }
 
-  return isValid;
+    if (esewaAmount === '') {
+        missingFields.push('Amount');
+        document.getElementById('esewaAmountError').textContent = 'Please enter the amount.';
+        isValid = false;
+    }
+
+    if (!isValid) {
+        let alertMessage = 'Please enter all details for eSewa.';
+        if (missingFields.length === 1) {
+            alertMessage = `Please enter ${missingFields[0]} for eSewa.`;
+        } else if (missingFields.length > 1) {
+            alertMessage = `Please enter the following details for eSewa: ${missingFields.join(', ')}.`;
+        }
+        alert(alertMessage);
+    }
+
+    return isValid;
 }
 </script>
             </div>
@@ -209,54 +209,60 @@ function validateEsewaForm() {
         });
 
 function validateCardForm() {
-  let cardNumber = document.getElementById('cardNumber').value.trim();
-  let expiry = document.getElementById('expiry').value.trim();
-  let cvv = document.getElementById('cvv').value.trim();
-  let cardName = document.getElementById('cardName').value.trim();
-  let isValid = true;
-  let missingFields = [];
+    let cardNumber = document.getElementById('cardNumber').value.trim();
+    let expiry = document.getElementById('expiry').value.trim();
+    let cvv = document.getElementById('cvv').value.trim();
+    let cardName = document.getElementById('cardName').value.trim();
+    let isValid = true;
+    let missingFields = [];
 
-  // Reset error messages
-  document.getElementById('cardNumberError').textContent = '';
-  document.getElementById('expiryError').textContent = '';
-  document.getElementById('cvvError').textContent = '';
-  document.getElementById('cardNameError').textContent = '';
+    // Reset error messages
+    document.getElementById('cardNumberError').textContent = '';
+    document.getElementById('expiryError').textContent = '';
+    document.getElementById('cvvError').textContent = '';
+    document.getElementById('cardNameError').textContent = '';
 
-  if (cardNumber === '') {
-    missingFields.push('Card Number');
-    document.getElementById('cardNumberError').textContent = 'Please enter your card number.';
-    isValid = false;
-  }
-
-  if (expiry === '') {
-    missingFields.push('Expiry Date');
-    document.getElementById('expiryError').textContent = 'Please select the expiry date.';
-    isValid = false;
-  }
-
-  if (cvv === '') {
-    missingFields.push('CVV');
-    document.getElementById('cvvError').textContent = 'Please enter the CVV.';
-    isValid = false;
-  }
-
-  if (cardName === '') {
-    missingFields.push('Card Holder Name');
-    document.getElementById('cardNameError').textContent = 'Please enter the card holder name.';
-    isValid = false;
-  }
-
-  if (!isValid) {
-    let alertMessage = 'Please enter all details.';
-    if (missingFields.length === 1) {
-      alertMessage = `Please enter ${missingFields[0]}.`;
-    } else if (missingFields.length > 1) {
-      alertMessage = `Please enter the following details: ${missingFields.join(', ')}.`;
+    if (cardNumber === '') {
+        missingFields.push('Card Number');
+        document.getElementById('cardNumberError').textContent = 'Please enter your card number.';
+        isValid = false;
+    } else if (cardNumber.length !== 16 || isNaN(cardNumber)) {
+        document.getElementById('cardNumberError').textContent = 'Please enter a valid 16-digit card number.';
+        isValid = false;
     }
-    alert(alertMessage);
-  }
 
-  return isValid;
+    if (expiry === '') {
+        missingFields.push('Expiry Date');
+        document.getElementById('expiryError').textContent = 'Please select the expiry date.';
+        isValid = false;
+    }
+
+    if (cvv === '') {
+        missingFields.push('CVV');
+        document.getElementById('cvvError').textContent = 'Please enter the CVV.';
+        isValid = false;
+    } else if (isNaN(cvv)) {
+        document.getElementById('cvvError').textContent = 'Please enter a valid CVV.';
+        isValid = false;
+    }
+
+    if (cardName === '') {
+        missingFields.push('Card Holder Name');
+        document.getElementById('cardNameError').textContent = 'Please enter the card holder name.';
+        isValid = false;
+    }
+
+    if (!isValid) {
+        let alertMessage = 'Please enter all details correctly.';
+        if (missingFields.length === 1) {
+            alertMessage = `Please enter ${missingFields[0]}.`;
+        } else if (missingFields.length > 1) {
+            alertMessage = `Please enter the following details: ${missingFields.join(', ')}.`;
+        }
+        alert(alertMessage);
+    }
+
+    return isValid;
 }
 </script>
 </body>
